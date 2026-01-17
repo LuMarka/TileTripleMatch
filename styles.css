@@ -1,0 +1,267 @@
+/* --- FUENTES E IMPORTACIONES --- */
+@import url('https://fonts.googleapis.com/css2?family=Gravitas+One&family=Paytone+One&display=swap');
+
+:root {
+    --glass: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --accent: #ffd700;
+    --primary: #ff2e63;
+    --bg-dark: #0f0c29;
+}
+
+/* --- RESET GENERAL --- */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    font-family: 'Paytone One', sans-serif;
+    color: white;
+    overflow: hidden;
+    padding: 15px;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- TEXTOS --- */
+.title-font { 
+    font-family: 'Gravitas One', cursive; 
+    text-transform: uppercase; 
+}
+
+.game-title {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 5px;
+    text-shadow: 3px 3px 0px var(--primary);
+}
+
+/* --- CONTENEDORES --- */
+.game-container {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 15px;
+}
+
+/* --- ESTADÍSTICAS --- */
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.stat-item {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.target-badge {
+    margin-top: 15px;
+    background: var(--accent);
+    color: #1a1a2e;
+    padding: 12px;
+    border-radius: 15px;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* --- TABLERO --- */
+.board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 5px;
+    padding: 10px;
+    aspect-ratio: 1/1;
+}
+
+.tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.1rem;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    transition: transform 0.1s;
+}
+
+.tile.selected {
+    background: rgba(255, 215, 0, 0.2);
+    box-shadow: 0 0 20px var(--accent);
+    transform: scale(1.1);
+}
+
+/* --- FOOTER Y BOTONES --- */
+.game-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.power-ups {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Mitad y mitad exacto */
+    gap: 12px;
+}
+
+.btn-tool {
+    height: 60px;
+    font-size: 1.6rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    background: var(--glass);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+#btn-auto-match {
+    background: rgba(255, 165, 0, 0.15);
+    border-color: rgba(255, 165, 0, 0.3);
+}
+
+#btn-auto-match:hover {
+    background: rgba(255, 69, 0, 0.4);
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.3);
+}
+
+#btn-shuffle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* BOTÓN REINICIAR */
+.btn-danger {
+    width: 100%;
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid #991b1b;
+    background: linear-gradient(to bottom, #4b1111, #2d0a0a);
+    color: #fca5a5;
+    font-family: 'Paytone One', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-danger:hover {
+    background: #7f1d1d;
+    color: white;
+}
+
+/* --- MODALES Y OVERLAYS --- */
+.overlay {
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0,0,0,0.85);
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 10000;
+}
+
+.modal {
+    background: #1e1e30; 
+    color: white; 
+    padding: 30px;
+    width: 90%; 
+    max-width: 350px; 
+    border-radius: 30px; 
+    text-align: center;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+.btn-main {
+    width: 100%; 
+    padding: 15px; 
+    border: none; 
+    border-radius: 15px;
+    background: var(--primary); 
+    color: white; 
+    cursor: pointer;
+    box-shadow: 0 4px 0 #b0265a; 
+    margin-top: 15px;
+    font-family: 'Gravitas One', cursive;
+}
+
+input[type="text"] {
+    width: 100%; 
+    padding: 12px; 
+    margin: 15px 0; 
+    border-radius: 12px;
+    border: none; 
+    text-align: center; 
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+/* --- UTILIDADES Y RESPONSIVE --- */
+.hidden { display: none !important; }
+
+@media (max-width: 380px) {
+    .tile { font-size: 1.6rem; }
+    .game-title { font-size: 1.7rem; }
+    .btn-tool { height: 50px; }
+}
+/* Animación de temblor para la bomba */
+.shake {
+    animation: shakeAnim 0.4s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+}
+
+@keyframes shakeAnim {
+    10%, 90% { transform: translate3d(-2px, 0, 0); }
+    20%, 80% { transform: translate3d(4px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+    40%, 60% { transform: translate3d(6px, 0, 0); }
+}
+#bomb-count {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2px 6px;
+    border-radius: 8px;
+    color: var(--accent);
+    font-weight: bold;
+    min-width: 20px;
+    display: inline-block;
+}
+
+/* Efecto visual cuando no hay bombas */
+.btn-tool:disabled, .btn-tool[style*="opacity"] {
+    filter: grayscale(1);
+    cursor: not-allowed;
+}

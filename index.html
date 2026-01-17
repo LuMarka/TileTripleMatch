@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Matcher Deluxe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&family=Paytone+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="login-screen" class="overlay">
+        <div class="modal card login-modal">
+            <h2 class="title-font">🍎 FRUIT MATCH</h2>
+            <p>Introduce tu nombre para guardar progreso</p>
+            <input type="text" id="username-input" placeholder="Tu nombre artístico..." autocomplete="off">
+            <button id="btn-login" class="btn-main title-font">¡A JUGAR!</button>
+        </div>
+    </div>
+
+    <div class="game-container hidden" id="main-game">
+        <h1 class="game-title title-font">FRUIT MATCH-3</h1>
+        
+        <header class="game-header card">
+            <div class="user-info">Jugador: <span id="display-name"></span></div>
+            <div class="stats">
+                <div class="stat-item">Nivel <span class="val-font">#<b id="level-val">1</b></span></div>
+                <div class="stat-item">Movs <span class="val-font"><b id="moves-val">20</b></span></div>
+                <div class="stat-item">Monedas <span class="val-font">💰<b id="coins-val">0</b></span></div>
+                <div class="stat-item">Puntos <span class="val-font">✨<b id="score-val">0</b></span></div>
+            </div>
+            <div id="target-msg" class="target-badge">Objetivo: 200 pts</div>
+        </header>
+
+        <div id="game-board" class="board card"></div>
+
+        <footer class="game-footer">
+            <div class="power-ups">
+                <div class="power-ups">
+                    <button id="btn-auto-match" class="btn-tool" title="Bomba de Frutas">
+                        💣 <span id="bomb-count" style="font-size: 0.8rem; margin-left: 5px;">3</span>
+                    </button>
+                    <button id="btn-shuffle" class="btn-tool" title="Mezclar Tablero">🔀</button>
+               
+            </div>
+            <button id="btn-reset-game" class="btn-danger">Reiniciar desde Nivel 1</button>
+        </footer>
+    </div>
+
+    <div id="overlay" class="overlay hidden">
+        <div class="modal card">
+            <h2 id="modal-title" class="title-font">¡NIVEL SUPERADO!</h2>
+            <p id="modal-msg"></p>
+            <button id="btn-next" class="btn-main title-font">CONTINUAR</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
